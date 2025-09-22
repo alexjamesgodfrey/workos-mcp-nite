@@ -1,7 +1,6 @@
 import { DatabaseService } from "@agentdb/sdk";
 import { gateway, generateObject, generateText } from "ai";
 import dotenv from "dotenv";
-import { v4 as uuidv4 } from "uuid";
 import { z } from "zod";
 import { tools } from "./tools";
 
@@ -9,7 +8,8 @@ dotenv.config();
 
 const modelName = "anthropic/claude-3.7-sonnet";
 
-const sessionToken = uuidv4();
+const sessionToken = "bfe80f86-5604-4ede-96f8-1b766e6e0f6c";
+// const sessionToken = uuidv4();
 console.log("uuid", sessionToken);
 const db = new DatabaseService(
   "https://api.agentdb.dev",
@@ -64,7 +64,7 @@ async function planTasks(goal: string) {
 const getPendingTasks = async () => {
   const result = await connection.execute([
     {
-      sql: 'SELECT * FROM tasks WHERE status = "pending" ORDER BY id',
+      sql: "SELECT * FROM tasks WHERE status = 'pending' ORDER BY id",
       params: [],
     },
   ]);
@@ -86,7 +86,7 @@ const executeTask = async (task: Task) => {
 const updateTask = async (task: Task) => {
   await connection.execute([
     {
-      sql: 'UPDATE tasks SET status = "completed", result = ? WHERE id = ?',
+      sql: "UPDATE tasks SET status = 'completed', result = ? WHERE id = ?",
       params: [task.result, task.id],
     },
   ]);
@@ -105,11 +105,11 @@ const reevaluateTasks = async () => {
 };
 
 async function runAgent(goal: string) {
-  await initDB(); // create ephemeral task db
+  //   await initDB(); // create ephemeral task db
 
-  console.log("Planning tasks...");
+  //   console.log("Planning tasks...");
 
-  await planTasks(goal); // plan tasks + populate db
+  //   await planTasks(goal); // plan tasks + populate db
 
   let tasks = await getPendingTasks();
 
