@@ -14,6 +14,9 @@ importers:
       ai:
         specifier: ^5.0.48
         version: 5.0.48(zod@4.1.11)
+      dotenv:
+        specifier: ^17.2.2
+        version: 17.2.2
       zod:
         specifier: ^4.1.11
         version: 4.1.11
@@ -62,6 +65,10 @@ packages:
     engines: {node: '>=18'}
     peerDependencies:
       zod: ^3.25.76 || ^4
+
+  dotenv@17.2.2:
+    resolution: {integrity: sha512-Sf2LSQP+bOlhKWWyhFsn0UsfdK/kCWRv1iuA2gXAwt3dyNabr6QSj00I2V10pidqz69soatm9ZwZvpQMTIOd5Q==}
+    engines: {node: '>=12'}
 
   eventsource-parser@3.0.6:
     resolution: {integrity: sha512-Vo1ab+QXPzZ4tCa8SwIHJFaSzy4R6SHf7BY79rFBDf0idraZWAkYrDjDj8uWaSm3S2TK+hJ7/t1CEmZ7jXw+pg==}
@@ -117,6 +124,8 @@ snapshots:
       '@ai-sdk/provider-utils': 3.0.9(zod@4.1.11)
       '@opentelemetry/api': 1.9.0
       zod: 4.1.11
+
+  dotenv@17.2.2: {}
 
   eventsource-parser@3.0.6: {}
 

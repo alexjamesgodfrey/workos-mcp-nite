@@ -10,6 +10,7 @@
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
     "ai": "^5.0.48",
+    "dotenv": "^17.2.2",
     "zod": "^4.1.11"
   },
   "devDependencies": {

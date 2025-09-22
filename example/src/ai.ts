@@ -1,5 +1,8 @@
 import { generateObject, generateText, streamText } from "ai";
+import dotenv from "dotenv";
 import { z } from "zod";
+
+dotenv.config();
 
 const MODELS = z.enum([
   "anthropic/claude-opus-4.1",
@@ -16,7 +19,6 @@ const MODELS = z.enum([
 type Model = z.infer<typeof MODELS>;
 
 export async function getTextCompletion(prompt: string, model: Model) {
-  console.log("getTextCompletion using model", model);
   const response = await generateText({
     prompt,
     model,
@@ -25,7 +27,6 @@ export async function getTextCompletion(prompt: string, model: Model) {
 }
 
 export async function getTextStream(prompt: string, model: Model) {
-  console.log("getTextStream using model", model);
   return streamText({
     prompt,
     model,
@@ -37,7 +38,6 @@ export async function getStructuredCompletion<T extends z.ZodType>(
   schema: T,
   model: Model
 ): Promise<z.infer<T>> {
-  console.log("getStructuredCompletion using model", model);
   const response = await generateObject({
     prompt,
     model,
